@@ -5,23 +5,18 @@ class Button extends Component {
     super(props);
   }
 
+  iconOrName() {
+    if (this.props.icon) return this.props.icon;
+    return this.props.name
+  }
+
   render() {
     return (
-      <button className="
-        bg-transparent 
-        hover:bg-black 
-        text-black-dark 
-        font-semibold 
-        hover:text-white 
-        py-2 
-        px-4 
-        mx-4 
-        border 
-        border-black 
-        hover:border-transparent 
-        rounded-full" 
+      <button 
+      name={this.props.name}
+      className="bg-transparent hover:bg-white text-white font-semibold hover:text-grey-dark h-12 w-12 mx-4 border border-white hover:border-transparent rounded-full" 
       onClick={() => { this.props.onClick() }}>
-       {this.props.name}
+       {this.iconOrName()}
       </button>
     );
   }
