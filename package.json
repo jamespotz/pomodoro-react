@@ -6,6 +6,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "^0.1.0-11",
+    "electron-is-dev": "^0.3.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
@@ -13,11 +14,31 @@
   "scripts": {
     "prestart": "tailwind build ./src/index.tailwind.css -c ./tailwind.js -o ./src/index.css",
     "start": "react-scripts start",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron-pack": "electron-builder -c.extraMetadata.main=build/electron.js",
+    "preelectron-pack": "yarn build"
   },
   "devDependencies": {
-    "tailwindcss": "^0.6.3"
-  }
+    "concurrently": "^3.6.0",
+    "electron": "^2.0.5",
+    "electron-builder": "^20.20.4",
+    "tailwindcss": "^0.6.3",
+    "wait-on": "^2.1.0"
+  },
+  "main": "public/electron.js",
+  "build": {
+    "appId": "com.jamespotz.electron-pomodoro",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories":{
+      "buildResources": "assets"
+    }
+  },
+  "author": "James Robert Rooke",
+  "homepage": "./"
 }
