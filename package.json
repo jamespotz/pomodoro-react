@@ -37,7 +37,14 @@
     ],
     "directories":{
       "buildResources": "assets"
-    }
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "pacman"
+      ],
+      "maintainer": "thepoltergeist23@gmail.com"
+    } 
   },
   "author": "James Robert Rooke",
   "homepage": "./"
